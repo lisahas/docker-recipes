@@ -9,7 +9,7 @@ WORKDIR /src
 COPY package*.json /src/
 
 # Ask npm to install the dependencies
-RUN npm install -g nodemon && npm install
+RUN npm install -g supervisor && npm install && npm install supervisor
 
 # Copy across all our files
 COPY . /src
@@ -18,4 +18,3 @@ COPY . /src
 EXPOSE 3000
 
 # Run no-demon so files can be updated
-CMD ["nodemon", "bin/www"]
