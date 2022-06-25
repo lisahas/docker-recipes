@@ -30,7 +30,12 @@ app.get("/db_test", function(req, res) {
 });
 
 app.get("/api", (req, res) => {
-    res.json({ message: "Hello from serveryyy!" });
+    sql = 'select * from test_table';
+    db.query(sql).then(results => {
+        console.log(results);
+        res.json({message: JSON.stringify(results)});
+    });
+    //res.json({ message: "Hello from serveryyy!" });
   });
 
 // Create a route for /goodbye
@@ -50,7 +55,7 @@ app.get("/hello/:name", function(req, res) {
     res.send("Hello " + req.params.name);
 });
 
-// All other GET requests not handled before will return our React app
+// All other GET requests not handled before will return static build of the react app
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
   });

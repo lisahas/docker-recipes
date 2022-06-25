@@ -6,15 +6,16 @@ WORKDIR /src
 
 # Copy across project configuration information
 # Install application dependencies
-COPY package*.json /src/
+COPY ./package*.json /src/
 
 # Ask npm to install the dependencies
-RUN npm install -g supervisor && npm install && npm install supervisor
+RUN npm install
 
 # Copy across all our files
 COPY . /src
 
 # Expose our application port (3000)
-EXPOSE 3001
+EXPOSE 3000
 
-CMD npm start
+RUN npm i
+CMD ["npm", "run", "start"]

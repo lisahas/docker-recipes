@@ -8,17 +8,15 @@ In this dockerised version you will get...
   * Express app that will link to the mysql db  (server directory)
   * mysqldb
   * phpmyadmin
-  * React front end files  (client directory)
+  * React front end 
 
-In the setup here, the react files are served statically from the build directory (this is handled in the server.js file) ie. you cannot run this from docker AND dynamically load react files.
+The react front end app AND the express app are in separate containers AND have hot reloading, ie. you can change code on either the front end or backend (or in the database) and see your changes.
 
-However, you can dynamically edit the express files as the express server is reloaded by supervisor at any code change.
-
-To refresh the react app files you need to run:
+The main express container can also be used to serve static files that are the result of running
 
 ```
-cd client # make sure you are in the client directory
 npm run build
 ```
 
-TODO: work out how to run the front end app in a connected container to make the dev environment more dynamic.
+In the client directory
+
