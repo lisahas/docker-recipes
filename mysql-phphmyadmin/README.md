@@ -4,7 +4,7 @@ These files will install Mysql and phpmyadmin (including all dependencies to run
 
 For security, this receipe uses a .env file for credentials.  A sample is provide, but if using these files for a fresh project, make sure to change them  and do NOT commit the changed .env file into your new project for security reasons.
 
-HOWEVER: for a single file install, download the docker-compose-singlefile.yml file, rename it to docker-compose.yml and then run as above.
+HOWEVER: for a single file install, download the docker-compose-singlefile.yml file, rename it to docker-compose.yml and then run using ```docker-compose up`` in a fresh directory, and with docker desktop running.
 
 To start a new project:
 
