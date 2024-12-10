@@ -23,6 +23,12 @@ ____
 
 Useful commands:
 
+List all running containers
+
+```bash
+docker ps
+```
+
 Get a shell in the container
 
 ```bash
