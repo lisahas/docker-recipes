@@ -1,8 +1,10 @@
 # MySQL and Phpmyadmin
 
-This will install Mysql and phpmyadmin (including all dependencies to run Phpmyadmin)
+These files will install Mysql and phpmyadmin (including all dependencies to run Phpmyadmin)
 
 For security, this receipe uses a .env file for credentials.  A sample is provide, but if using these files for a fresh project, make sure to change them  and do NOT commit the changed .env file into your new project for security reasons.
+
+HOWEVER: for a single file install, download the docker-compose-singlefile.yml file, rename it to docker-compose.yml and then run as above.
 
 To start a new project:
 
@@ -19,6 +21,8 @@ docker-compose up -d
 
 http://localhost:8081/
 
+Log in with the credentials of your .env file (if you have one), or the credentials in the docker-compose.yml file if you are using the single file reciepe.
+
 ____
 
 Useful commands:
@@ -29,7 +33,7 @@ List all running containers
 docker ps
 ```
 
-Get a shell in the container
+Get a shell in the container  (get the container name using docker ps)
 
 ```bash
 docker exec -it <container name> bash -l
@@ -40,3 +44,17 @@ Now get a MySQL CLI:
 ```bash
 mysql -uroot -p<password> 
 ```
+
+____
+
+Troubleshooting
+
+'port already allocated' error.  This means containers using these ports are already running.  Stop them by running ```docker ps``` to get a list of containers then 
+
+```
+docker stop <container name or hash>
+
+```
+You can stop the containers in docker desktop (windows and mac), but this is not recommended.
+
+If necessary, the db directory can be deleted to start fresh, but the database will be lost (not a problem if the database has been exported as a .sql file - it can be re-imported)
